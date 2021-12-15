@@ -8,8 +8,8 @@ class BookList extends Component {
 
     render() {
         return (
-            <Container className="justify-content-center py-5 bg-light">
-                <Row>
+           
+                <Row className = "m-2">
                     {
                                                     
                         scifi.map(book => (
@@ -19,7 +19,7 @@ class BookList extends Component {
                     
                 </Row>
                 
-            </Container>
+            
         )
     }
 }
