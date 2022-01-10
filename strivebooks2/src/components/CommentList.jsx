@@ -8,12 +8,17 @@ class CommentList extends Component {
         
     }
 
+    componentDidMount = async () => {
+        
+        this.fetchComments()
+    }
+
     fetchComments = async () => {
         
         try {
             let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.bookid , {
                 headers: {
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwYWU5ZjRjZmY1ZjAwMTU5MGJkYjAiLCJpYXQiOjE2Mzk2NjY5NjQsImV4cCI6MTY0MDg3NjU2NH0.JTNNPNkERRsBtvJOKXoxdBAiC0mv7oLZ4xfp9iu0osE",
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwYWU5ZjRjZmY1ZjAwMTU5MGJkYjAiLCJpYXQiOjE2NDE4MjMwOTYsImV4cCI6MTY0MzAzMjY5Nn0.BV31LfYAMSTwRVXPREO6uDKBAFVApeBsU8fj968Qw3w",
                 }
             })
             
@@ -37,11 +42,7 @@ class CommentList extends Component {
     }
 
     // how can we wait for the initial render to complete before doing the fetch?
-    componentDidMount = async () => {
-        
-        this.fetchComments()
-    }
-
+    
     
     render() {
         
@@ -51,7 +52,7 @@ class CommentList extends Component {
                 <ListGroup>
                     {
                         this.state.comments.map(c => (
-                            <ListGroup.Item key={c.elementId}>
+                            <ListGroup.Item key={c._id}>
                                 Rate {c.rate} - {c.comment}                                
                             </ListGroup.Item>
                         ))
